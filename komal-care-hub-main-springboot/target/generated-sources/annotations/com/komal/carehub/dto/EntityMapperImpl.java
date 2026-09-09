@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-09-09T12:26:20+0530",
-    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.42.0.v20250526-2018, environment: Java 21.0.7 (Eclipse Adoptium)"
+    date = "2026-09-09T17:37:50+0530",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.7 (Eclipse Adoptium)"
 )
 @Component
 public class EntityMapperImpl implements EntityMapper {
@@ -30,9 +30,9 @@ public class EntityMapperImpl implements EntityMapper {
 
         CategoryDto.CategoryDtoBuilder categoryDto = CategoryDto.builder();
 
-        categoryDto.description( category.getDescription() );
         categoryDto.id( category.getId() );
         categoryDto.name( category.getName() );
+        categoryDto.description( category.getDescription() );
 
         return categoryDto.build();
     }
@@ -45,9 +45,9 @@ public class EntityMapperImpl implements EntityMapper {
 
         Category.CategoryBuilder category = Category.builder();
 
-        category.description( categoryDto.getDescription() );
         category.id( categoryDto.getId() );
         category.name( categoryDto.getName() );
+        category.description( categoryDto.getDescription() );
 
         return category.build();
     }
@@ -61,28 +61,28 @@ public class EntityMapperImpl implements EntityMapper {
         ProductDto.ProductDtoBuilder productDto = ProductDto.builder();
 
         productDto.categoryId( productCategoryId( product ) );
-        productDto.batchNumber( product.getBatchNumber() );
-        productDto.composition( product.getComposition() );
-        productDto.description( product.getDescription() );
-        productDto.discountPercentage( product.getDiscountPercentage() );
-        productDto.expiryDate( product.getExpiryDate() );
-        productDto.gstPercentage( product.getGstPercentage() );
         productDto.id( product.getId() );
-        productDto.imageId( product.getImageId() );
-        productDto.imageUrl( product.getImageUrl() );
-        productDto.isActive( product.getIsActive() );
-        productDto.manufacturer( product.getManufacturer() );
-        productDto.mrp( product.getMrp() );
         productDto.name( product.getName() );
-        productDto.packagingType( product.getPackagingType() );
-        productDto.prescriptionRequired( product.getPrescriptionRequired() );
+        productDto.description( product.getDescription() );
         productDto.price( product.getPrice() );
-        productDto.purchasePrice( product.getPurchasePrice() );
-        productDto.reorderLevel( product.getReorderLevel() );
-        productDto.stockQuantity( product.getStockQuantity() );
         if ( product.getStockStatus() != null ) {
             productDto.stockStatus( product.getStockStatus().name() );
         }
+        productDto.imageUrl( product.getImageUrl() );
+        productDto.imageId( product.getImageId() );
+        productDto.isActive( product.getIsActive() );
+        productDto.stockQuantity( product.getStockQuantity() );
+        productDto.reorderLevel( product.getReorderLevel() );
+        productDto.batchNumber( product.getBatchNumber() );
+        productDto.expiryDate( product.getExpiryDate() );
+        productDto.prescriptionRequired( product.getPrescriptionRequired() );
+        productDto.mrp( product.getMrp() );
+        productDto.discountPercentage( product.getDiscountPercentage() );
+        productDto.purchasePrice( product.getPurchasePrice() );
+        productDto.gstPercentage( product.getGstPercentage() );
+        productDto.manufacturer( product.getManufacturer() );
+        productDto.composition( product.getComposition() );
+        productDto.packagingType( product.getPackagingType() );
 
         return productDto.build();
     }
@@ -96,28 +96,28 @@ public class EntityMapperImpl implements EntityMapper {
         Product.ProductBuilder product = Product.builder();
 
         product.category( productDtoToCategory( productDto ) );
-        product.batchNumber( productDto.getBatchNumber() );
-        product.composition( productDto.getComposition() );
-        product.description( productDto.getDescription() );
-        product.discountPercentage( productDto.getDiscountPercentage() );
-        product.expiryDate( productDto.getExpiryDate() );
-        product.gstPercentage( productDto.getGstPercentage() );
         product.id( productDto.getId() );
-        product.imageId( productDto.getImageId() );
-        product.imageUrl( productDto.getImageUrl() );
-        product.isActive( productDto.getIsActive() );
-        product.manufacturer( productDto.getManufacturer() );
-        product.mrp( productDto.getMrp() );
         product.name( productDto.getName() );
-        product.packagingType( productDto.getPackagingType() );
-        product.prescriptionRequired( productDto.getPrescriptionRequired() );
+        product.description( productDto.getDescription() );
         product.price( productDto.getPrice() );
-        product.purchasePrice( productDto.getPurchasePrice() );
-        product.reorderLevel( productDto.getReorderLevel() );
-        product.stockQuantity( productDto.getStockQuantity() );
         if ( productDto.getStockStatus() != null ) {
             product.stockStatus( Enum.valueOf( StockStatus.class, productDto.getStockStatus() ) );
         }
+        product.imageUrl( productDto.getImageUrl() );
+        product.imageId( productDto.getImageId() );
+        product.isActive( productDto.getIsActive() );
+        product.stockQuantity( productDto.getStockQuantity() );
+        product.reorderLevel( productDto.getReorderLevel() );
+        product.batchNumber( productDto.getBatchNumber() );
+        product.expiryDate( productDto.getExpiryDate() );
+        product.prescriptionRequired( productDto.getPrescriptionRequired() );
+        product.mrp( productDto.getMrp() );
+        product.discountPercentage( productDto.getDiscountPercentage() );
+        product.purchasePrice( productDto.getPurchasePrice() );
+        product.gstPercentage( productDto.getGstPercentage() );
+        product.manufacturer( productDto.getManufacturer() );
+        product.composition( productDto.getComposition() );
+        product.packagingType( productDto.getPackagingType() );
 
         return product.build();
     }
@@ -135,10 +135,10 @@ public class EntityMapperImpl implements EntityMapper {
         enquiryDto.userEmail( enquiryUserEmail( enquiry ) );
         enquiryDto.userPhone( enquiryUserPhone( enquiry ) );
         enquiryDto.id( enquiry.getId() );
-        enquiryDto.items( enquiryItemListToEnquiryItemDtoList( enquiry.getItems() ) );
         if ( enquiry.getStatus() != null ) {
             enquiryDto.status( enquiry.getStatus().name() );
         }
+        enquiryDto.items( enquiryItemListToEnquiryItemDtoList( enquiry.getItems() ) );
 
         return enquiryDto.build();
     }
@@ -153,10 +153,10 @@ public class EntityMapperImpl implements EntityMapper {
 
         enquiry.user( enquiryDtoToUser( enquiryDto ) );
         enquiry.id( enquiryDto.getId() );
-        enquiry.items( enquiryItemDtoListToEnquiryItemList( enquiryDto.getItems() ) );
         if ( enquiryDto.getStatus() != null ) {
             enquiry.status( Enum.valueOf( EnquiryStatus.class, enquiryDto.getStatus() ) );
         }
+        enquiry.items( enquiryItemDtoListToEnquiryItemList( enquiryDto.getItems() ) );
 
         return enquiry.build();
     }
@@ -201,9 +201,9 @@ public class EntityMapperImpl implements EntityMapper {
 
         reviewDto.userId( reviewUserId( review ) );
         reviewDto.productId( reviewProductId( review ) );
-        reviewDto.comment( review.getComment() );
         reviewDto.id( review.getId() );
         reviewDto.rating( review.getRating() );
+        reviewDto.comment( review.getComment() );
         if ( review.getStatus() != null ) {
             reviewDto.status( review.getStatus().name() );
         }
@@ -221,9 +221,9 @@ public class EntityMapperImpl implements EntityMapper {
 
         review.user( reviewDtoToUser( reviewDto ) );
         review.product( reviewDtoToProduct( reviewDto ) );
-        review.comment( reviewDto.getComment() );
         review.id( reviewDto.getId() );
         review.rating( reviewDto.getRating() );
+        review.comment( reviewDto.getComment() );
         if ( reviewDto.getStatus() != null ) {
             review.status( Enum.valueOf( ReviewStatus.class, reviewDto.getStatus() ) );
         }

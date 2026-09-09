@@ -33,12 +33,12 @@ public class DataImporterController {
     @PostMapping("/import-medicines")
     public ResponseEntity<String> importMedicines() {
         try {
-            File file = new File("G:/komal-care-hub/indian_medicine_data.json");
-            if (!file.exists()) {
-                return ResponseEntity.badRequest().body("File not found: indian_medicine_data.json");
+            org.springframework.core.io.Resource resource = new org.springframework.core.io.ClassPathResource("data/indian_medicine_data.json");
+            if (!resource.exists()) {
+                return ResponseEntity.badRequest().body("File not found: data/indian_medicine_data.json in resources");
             }
 
-            log.info("Starting import from {}", file.getAbsolutePath());
+            log.info("Starting import from classpath:data/indian_medicine_data.json");
 
             // Prevent duplicate imports by tracking existing names
             java.util.Set<String> existingNames = productRepository.findAllNames();
@@ -55,7 +55,10 @@ public class DataImporterController {
                         return categoryRepository.save(c);
                     });
 
-            List<Map<String, String>> medicines = objectMapper.readValue(file, new TypeReference<List<Map<String, String>>>() {});
+            List<Map<String, String>> medicines;
+            try (java.io.InputStream is = resource.getInputStream()) {
+                medicines = objectMapper.readValue(is, new TypeReference<List<Map<String, String>>>() {});
+            }
             
             log.info("Parsed {} medicines from JSON. Saving in batches...", medicines.size());
 

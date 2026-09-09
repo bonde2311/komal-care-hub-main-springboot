@@ -1,0 +1,167 @@
+[
+    {
+        "id": "253959",
+        "name": "Zoxikyne 40mg Injection",
+        "price(₹)": "25",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "Kyna Pharmaceuticals",
+        "type": "allopathy",
+        "pack_size_label": "vial of 2 ml Injection",
+        "short_composition1": "Piroxicam (40mg)",
+        "short_composition2": ""
+    },
+    {
+        "id": "253960",
+        "name": "Zondec 25 Injection",
+        "price(₹)": "95",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "M.M Pharma",
+        "type": "allopathy",
+        "pack_size_label": "ampoule of 1 ml Injection",
+        "short_composition1": "Nandrolone Decanoate (25mg)",
+        "short_composition2": ""
+    },
+    {
+        "id": "253961",
+        "name": "Zithmark 250mg Tablet",
+        "price(₹)": "67",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "Indmark Biotech Private Limited",
+        "type": "allopathy",
+        "pack_size_label": "strip of 6 tablets",
+        "short_composition1": "Azithromycin (250mg)",
+        "short_composition2": ""
+    },
+    {
+        "id": "253962",
+        "name": "Zoxinace 200mg Tablet SR",
+        "price(₹)": "55",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "Zoxvina Biotech Private Limited",
+        "type": "allopathy",
+        "pack_size_label": "strip of 10 tablet sr",
+        "short_composition1": "Aceclofenac (200mg)",
+        "short_composition2": ""
+    },
+    {
+        "id": "253963",
+        "name": "Zestrain 100mg/325mg/250mg Tablet MR",
+        "price(₹)": "70",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "Vesnik Molecules",
+        "type": "allopathy",
+        "pack_size_label": "strip of 10 tablet mr",
+        "short_composition1": "Aceclofenac (100mg) ",
+        "short_composition2": " Paracetamol (325mg) "
+    },
+    {
+        "id": "253964",
+        "name": "Zunix 50mg Dry Syrup",
+        "price(₹)": "49",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "Vesnik Molecules",
+        "type": "allopathy",
+        "pack_size_label": "bottle of 30 ml Dry Syrup",
+        "short_composition1": "Cefixime (50mg)",
+        "short_composition2": ""
+    },
+    {
+        "id": "253965",
+        "name": "Ziyapod 200mg Tablet DT",
+        "price(₹)": "187.3",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "Ziyana Lifesciences Pvt Ltd",
+        "type": "allopathy",
+        "pack_size_label": "strip of 10 tablet dt",
+        "short_composition1": "Cefpodoxime Proxetil (200mg)",
+        "short_composition2": ""
+    },
+    {
+        "id": "253966",
+        "name": "Zeotaz 4000mg/500mg Injection",
+        "price(₹)": "490",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "Intsia Pharma Private Limited",
+        "type": "allopathy",
+        "pack_size_label": "vial of 1 Injection",
+        "short_composition1": "Piperacillin (4000mg) ",
+        "short_composition2": " Tazobactum (500mg)"
+    },
+    {
+        "id": "253967",
+        "name": "Zogrell A 75mg/75mg Tablet",
+        "price(₹)": "75",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "Vhb Life Sciences Inc",
+        "type": "allopathy",
+        "pack_size_label": "strip of 10 tablets",
+        "short_composition1": "Aspirin (75mg) ",
+        "short_composition2": " Clopidogrel (75mg)"
+    },
+    {
+        "id": "253968",
+        "name": "Zef CV 200mg/125mg Tablet",
+        "price(₹)": "260",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "ZRS Labs",
+        "type": "allopathy",
+        "pack_size_label": "strip of 10 tablets",
+        "short_composition1": "Cefixime (200mg) ",
+        "short_composition2": " Clavulanic Acid (125mg)"
+    },
+    {
+        "id": "253969",
+        "name": "Ziyapod 100mg Oral Suspension",
+        "price(₹)": "62.3",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "Ziyana Lifesciences Pvt Ltd",
+        "type": "allopathy",
+        "pack_size_label": "bottle of 30 ml Oral Suspension",
+        "short_composition1": "Cefpodoxime Proxetil (100mg)",
+        "short_composition2": ""
+    },
+    {
+        "id": "253970",
+        "name": "Zemhart 30mg Tablet",
+        "price(₹)": "54",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "Leeford Healthcare Ltd",
+        "type": "allopathy",
+        "pack_size_label": "strip of 10 tablets",
+        "short_composition1": "Diltiazem (30mg)",
+        "short_composition2": ""
+    },
+    {
+        "id": "253971",
+        "name": "Zivex 25mg Tablet",
+        "price(₹)": "57",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "Euro Organics",
+        "type": "allopathy",
+        "pack_size_label": "strip of 10 tablets",
+        "short_composition1": "Hydroxyzine (25mg)",
+        "short_composition2": ""
+    },
+    {
+        "id": "253972",
+        "name": "ZI Fast 500mg Injection",
+        "price(₹)": "152",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "Burgeon Health Series Private Limited",
+        "type": "allopathy",
+        "pack_size_label": "vial of 1 Injection",
+        "short_composition1": "Azithromycin (500mg)",
+        "short_composition2": ""
+    },
+    {
+        "id": "253973",
+        "name": "Zyvocol 1% Dusting Powder",
+        "price(₹)": "110",
+        "Is_discontinued": "FALSE",
+        "manufacturer_name": "GBK Healthcare",
+        "type": "allopathy",
+        "pack_size_label": "bottle of 75 gm Dusting Powder",
+        "short_composition1": "Clotrimazole (1% w/w)",
+        "short_composition2": ""
+    }
+]

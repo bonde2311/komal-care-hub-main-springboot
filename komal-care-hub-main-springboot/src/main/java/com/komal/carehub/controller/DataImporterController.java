@@ -41,8 +41,9 @@ public class DataImporterController {
 
             log.info("Starting import from classpath:data/indian_medicine_data.zip");
 
-            // Prevent duplicate imports by tracking existing names
+            // Prevent duplicate imports by tracking existing IDs and names
             java.util.Set<String> existingNames = productRepository.findAllNames();
+            java.util.Set<String> existingExternalIds = productRepository.findAllExternalIds();
             log.info("Found {} existing products in database.", existingNames.size());
 
             // Check if default category exists, create if not
@@ -84,7 +85,8 @@ public class DataImporterController {
                             String packSize = med.get("pack_size_label");
                             String productName = med.get("name") + (packSize != null && !packSize.isEmpty() ? " (" + packSize + ")" : "");
                             
-                            if (existingNames.contains(productName)) {
+                            // Skip if externalId or name is already in the database
+                            if (existingNames.contains(productName) || existingExternalIds.contains(externalId)) {
                                 skipped++;
                                 continue;
                             }
@@ -94,6 +96,7 @@ public class DataImporterController {
                             p.setName(productName);
                             
                             existingNames.add(productName);
+                            existingExternalIds.add(externalId);
                             
                             String comp1 = med.get("short_composition1") != null ? med.get("short_composition1").trim() : "";
                             String comp2 = med.get("short_composition2") != null ? med.get("short_composition2").trim() : "";
@@ -105,7 +108,7 @@ public class DataImporterController {
                             p.setManufacturer(mfr);
                             p.setPackagingType(packSize);
                             
-                            String priceStr = med.get("price(?)");
+                            String priceStr = med.get("price(₹)");
                             if (priceStr == null || priceStr.isEmpty() || priceStr.equalsIgnoreCase("nan")) {
                                 priceStr = "0.00";
                             }
@@ -123,14 +126,19 @@ public class DataImporterController {
                             p.setPrescriptionRequired(rx != null && rx.equalsIgnoreCase("yes"));
                             
                             batch.add(p);
-                            count++;
                             
                             if (batch.size() >= 1000) {
-                                productRepository.saveAll(batch);
-                                log.info("Saved batch of 1000. Total saved: {}", count);
-                                batch.clear();
-                                // Clean up memory aggressively
-                                System.gc();
+                                try {
+                                    productRepository.saveAll(batch);
+                                    count += batch.size();
+                                    log.info("Saved batch of 1000. Total saved: {}", count);
+                                } catch (Exception e) {
+                                    log.error("Failed to save batch: {}", e.getMessage());
+                                } finally {
+                                    batch.clear();
+                                    // Clean up memory aggressively
+                                    System.gc();
+                                }
                             }
                             
                         } catch (Exception e) {
@@ -141,8 +149,13 @@ public class DataImporterController {
             }
             
             if (!batch.isEmpty()) {
-                productRepository.saveAll(batch);
-                log.info("Saved final batch of {}. Total saved: {}", batch.size(), count);
+                try {
+                    productRepository.saveAll(batch);
+                    count += batch.size();
+                    log.info("Saved final batch of {}. Total saved: {}", batch.size(), count);
+                } catch (Exception e) {
+                    log.error("Failed to save final batch: {}", e.getMessage());
+                }
             }
             
             return ResponseEntity.ok(String.format("Import successful! Saved %d new medicines. Skipped %d duplicates.", count, skipped));

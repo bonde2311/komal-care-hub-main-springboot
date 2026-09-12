@@ -33,12 +33,12 @@ public class DataImporterController {
     @PostMapping("/import-medicines")
     public ResponseEntity<String> importMedicines() {
         try {
-            org.springframework.core.io.Resource resource = new org.springframework.core.io.ClassPathResource("data/indian_medicine_data.json");
+            org.springframework.core.io.Resource resource = new org.springframework.core.io.ClassPathResource("data/indian_medicine_data.zip");
             if (!resource.exists()) {
-                return ResponseEntity.badRequest().body("File not found: data/indian_medicine_data.json in resources");
+                return ResponseEntity.badRequest().body("File not found: data/indian_medicine_data.zip in resources");
             }
 
-            log.info("Starting import from classpath:data/indian_medicine_data.json");
+            log.info("Starting import from classpath:data/indian_medicine_data.zip");
 
             // Prevent duplicate imports by tracking existing names
             java.util.Set<String> existingNames = productRepository.findAllNames();
@@ -56,8 +56,16 @@ public class DataImporterController {
                     });
 
             List<Map<String, String>> medicines;
-            try (java.io.InputStream is = resource.getInputStream()) {
-                medicines = objectMapper.readValue(is, new TypeReference<List<Map<String, String>>>() {});
+            try (java.io.InputStream is = resource.getInputStream();
+                 java.util.zip.ZipInputStream zis = new java.util.zip.ZipInputStream(is)) {
+                 
+                java.util.zip.ZipEntry entry = zis.getNextEntry();
+                if (entry == null) {
+                    return ResponseEntity.badRequest().body("No JSON file found inside the ZIP archive");
+                }
+                
+                log.info("Extracting and parsing {}...", entry.getName());
+                medicines = objectMapper.readValue(zis, new TypeReference<List<Map<String, String>>>() {});
             }
             
             log.info("Parsed {} medicines from JSON. Saving in batches...", medicines.size());

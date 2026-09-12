@@ -115,8 +115,8 @@ public class DataImporterController {
                                 p.setPrice(BigDecimal.ZERO);
                             }
                             
-                            p.setCategoryId(defaultCategory.getId());
-                            p.setStockStatus("IN_STOCK");
+                            p.setCategory(defaultCategory);
+                            p.setStockStatus(com.komal.carehub.entity.enums.StockStatus.IN_STOCK);
                             p.setStockQuantity(100); 
                             
                             String rx = med.get("rx_required");

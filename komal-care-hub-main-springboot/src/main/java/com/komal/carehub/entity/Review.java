@@ -28,6 +28,9 @@ public class Review {
     @Column(columnDefinition = "TEXT")
     private String comment;
 
+    @Column(columnDefinition = "TEXT")
+    private String userImage;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ReviewStatus status;
@@ -37,10 +40,9 @@ public class Review {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
 }
-

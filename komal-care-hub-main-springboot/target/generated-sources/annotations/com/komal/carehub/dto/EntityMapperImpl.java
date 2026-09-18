@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-09-12T15:51:29+0530",
-    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.42.0.v20250526-2018, environment: Java 21.0.7 (Eclipse Adoptium)"
+    date = "2026-09-18T09:36:55+0530",
+    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.46.100.v20260826-1225, environment: Java 21.0.12.1 (Eclipse Adoptium)"
 )
 @Component
 public class EntityMapperImpl implements EntityMapper {
@@ -200,13 +200,17 @@ public class EntityMapperImpl implements EntityMapper {
         ReviewDto.ReviewDtoBuilder reviewDto = ReviewDto.builder();
 
         reviewDto.userId( reviewUserId( review ) );
+        reviewDto.userName( reviewUserName( review ) );
+        reviewDto.userCity( reviewUserCity( review ) );
         reviewDto.productId( reviewProductId( review ) );
         reviewDto.comment( review.getComment() );
+        reviewDto.createdAt( review.getCreatedAt() );
         reviewDto.id( review.getId() );
         reviewDto.rating( review.getRating() );
         if ( review.getStatus() != null ) {
             reviewDto.status( review.getStatus().name() );
         }
+        reviewDto.userImage( review.getUserImage() );
 
         return reviewDto.build();
     }
@@ -222,11 +226,13 @@ public class EntityMapperImpl implements EntityMapper {
         review.user( reviewDtoToUser( reviewDto ) );
         review.product( reviewDtoToProduct( reviewDto ) );
         review.comment( reviewDto.getComment() );
+        review.createdAt( reviewDto.getCreatedAt() );
         review.id( reviewDto.getId() );
         review.rating( reviewDto.getRating() );
         if ( reviewDto.getStatus() != null ) {
             review.status( Enum.valueOf( ReviewStatus.class, reviewDto.getStatus() ) );
         }
+        review.userImage( reviewDto.getUserImage() );
 
         return review.build();
     }
@@ -411,6 +417,36 @@ public class EntityMapperImpl implements EntityMapper {
             return null;
         }
         return id;
+    }
+
+    private String reviewUserName(Review review) {
+        if ( review == null ) {
+            return null;
+        }
+        User user = review.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        String name = user.getName();
+        if ( name == null ) {
+            return null;
+        }
+        return name;
+    }
+
+    private String reviewUserCity(Review review) {
+        if ( review == null ) {
+            return null;
+        }
+        User user = review.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        String city = user.getCity();
+        if ( city == null ) {
+            return null;
+        }
+        return city;
     }
 
     private Long reviewProductId(Review review) {

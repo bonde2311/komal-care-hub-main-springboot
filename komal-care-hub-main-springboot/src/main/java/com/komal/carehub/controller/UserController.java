@@ -45,6 +45,8 @@ public class UserController {
                 .email(user.getEmail())
                 .phone(user.getPhone())
                 .address(user.getAddress())
+                .city(user.getCity())
+                .zipCode(user.getZipCode())
                 .profilePicture(user.getProfilePicture())
                 .role(user.getRole().name())
                 .build()
@@ -58,6 +60,8 @@ public class UserController {
         user.setName(dto.getName());
         user.setPhone(dto.getPhone());
         user.setAddress(dto.getAddress());
+        user.setCity(dto.getCity());
+        user.setZipCode(dto.getZipCode());
         user.setProfilePicture(dto.getProfilePicture());
         
         userRepository.save(user);
@@ -71,6 +75,8 @@ public class UserController {
                 .email(user.getEmail())
                 .phone(user.getPhone())
                 .address(user.getAddress())
+                .city(user.getCity())
+                .zipCode(user.getZipCode())
                 .profilePicture(user.getProfilePicture())
                 .role(user.getRole().name())
                 .build()

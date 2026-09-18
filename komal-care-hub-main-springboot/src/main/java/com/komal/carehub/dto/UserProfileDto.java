@@ -13,5 +13,7 @@ public class UserProfileDto {
     private String name;
     private String phone;
     private String address;
+    private String city;
+    private String zipCode;
     private String profilePicture;
 }

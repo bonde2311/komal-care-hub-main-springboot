@@ -38,6 +38,10 @@ public class User {
     @Column(columnDefinition = "TEXT")
     private String address;
 
+    private String city;
+
+    private String zipCode;
+
     @Column(columnDefinition = "TEXT")
     private String profilePicture;
 

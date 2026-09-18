@@ -11,5 +11,7 @@ import java.util.List;
 public interface ReviewRepository extends JpaRepository<Review, Long> {
     List<Review> findByStatus(ReviewStatus status);
     List<Review> findByProductIdAndStatus(Long productId, ReviewStatus status);
+    List<Review> findAllByOrderByCreatedAtDesc();
+    List<Review> findByStatusOrderByCreatedAtDesc(ReviewStatus status);
 }
 

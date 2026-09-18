@@ -34,6 +34,8 @@ public interface EntityMapper {
     EnquiryItem toEnquiryItem(EnquiryItemDto enquiryItemDto);
 
     @Mapping(source = "user.id", target = "userId")
+    @Mapping(source = "user.name", target = "userName")
+    @Mapping(source = "user.city", target = "userCity")
     @Mapping(source = "product.id", target = "productId")
     ReviewDto toReviewDto(Review review);
 
